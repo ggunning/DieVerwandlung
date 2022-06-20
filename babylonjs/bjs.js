@@ -118,6 +118,7 @@ function setupFloorPlan(scene) {
 };
 
 function setupAnimation1(pan, tilt, position, frameRate, camera) {
+
     //seconds 0 to 5
     pan = new BABYLON.Animation("pan", "rotation.y", frameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
     tilt = new BABYLON.Animation("tilt", "rotation.x", frameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
@@ -135,9 +136,9 @@ function setupAnimation1(pan, tilt, position, frameRate, camera) {
 
     pan_keys.push({
         frame: 5,
-        value: Math.PI / 16
+        value: 0
     });
-
+    
     //Tilt
     tilt_keys.push({
         frame: 0,
@@ -145,21 +146,22 @@ function setupAnimation1(pan, tilt, position, frameRate, camera) {
     });
 
     tilt_keys.push({
-        frame: 5 * frameRate,
-        value: Math.PI / 2
+        frame: 12 * frameRate,
+        value: Math.PI / 1.9
     });
 
     // Postion
     position_keys.push({
         frame: 0,
-        value: camera.position
+        //value: camera.position
+        value: new BABYLON.Vector3(0, 0, 0)
     });
-
+    
     position_keys.push({
-        frame: 5 * frameRate,
+        frame: 11 * frameRate,
         value: new BABYLON.Vector3(0, 40, 0)
     });
-
+    
     pan.setKeys(pan_keys);
     tilt.setKeys(tilt_keys);
     position.setKeys(position_keys);
@@ -376,7 +378,7 @@ function setupButtons(scene, pan, tilt, position, camera, movein, rotate, frameR
             camera,
             [pan, tilt, position],
             0,
-            5 * frameRate,
+            10 * frameRate,
             false
         );
     });
